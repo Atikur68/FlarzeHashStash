@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">FlarzeHashStash</string>
+    <string name="skip">SKIP</string>
+    <string name="gotit">GOT IT</string>
+
+    <string name="hash_title">Don\'t go solo. Review places of interest, collaboratively.</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="text_term_condition">By using this app, you agree to the Terms and Privacy Policy.</string>
+
+    <string name="reviews">SICK OF NOISY REVIEWS</string>
+    <string name="share">GIVING BUT NOT RECEIVING</string>
+    <string name="social">LACKING SOCIAL PRESENCE</string>
+
+    <string name="noisy_reviews">Share your temporary experiences anywhere through short hash tags</string>
+    <string name="share_time">Stash your hash tagged experiences at specific locations to gain discounts at partnered locations </string>
+    <string name="social_network_hint">Share your hashmaps to gain more supporters and connect with new people</string>
+    <string name="nav_header_contry">USA</string>
+</resources>
