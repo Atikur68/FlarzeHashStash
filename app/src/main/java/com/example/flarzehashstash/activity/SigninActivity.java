@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.flarzehashstash.R;
@@ -13,8 +14,8 @@ import com.example.flarzehashstash.R;
 public class SigninActivity extends AppCompatActivity {
 
 
-    Button btn_signin;
-    TextView txt_instragram;
+    Button btn_signin,btn_sign_instragram;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +24,11 @@ public class SigninActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+      //  LinearLayout layout=(LinearLayout) findViewById(R.id.signingLayout);
+      //  layout.setBackgroundResource(R.drawable.signing_background);
+
         btn_signin=findViewById(R.id.btn_sign);
-        txt_instragram=findViewById(R.id.txt_instragram);
+        btn_sign_instragram=findViewById(R.id.btn_sign_instragram);
 
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +37,7 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
 
-        txt_instragram.setOnClickListener(new View.OnClickListener() {
+        btn_sign_instragram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(SigninActivity.this, "Clicked", Toast.LENGTH_SHORT).show();

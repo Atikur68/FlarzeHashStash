@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_hashmap"
-            android:icon="@drawable/ic_action_hashmap"
+            android:icon="@drawable/hashmap_icon"
             android:title="HashMap" />
         <item
             android:id="@+id/nav_slideshow"
@@ -31,10 +31,10 @@
                 android:icon="@drawable/ic_action_rate"
                 android:title="Rate Us" />
 
-            <!--<item-->
-            <!--android:id="@+id/nav_logout"-->
-            <!--android:icon="@drawable/ic_action_rate"-->
-            <!--android:title="Log out" />-->
+            <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout_icon"
+            android:title="Log out" />
 
         </menu>
     </item>
