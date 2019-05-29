@@ -9,12 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.flarzehashstash.MainActivity;
 import com.example.flarzehashstash.R;
 import com.example.flarzehashstash.data.ColorShades;
 import com.example.flarzehashstash.data.SharedPref;
@@ -56,6 +56,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_welcome);
         getSupportActionBar().hide();
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         viewPager = (ViewPager) findViewById(R.id.pager);
 
         viewPager.setAdapter(new ViewPagerAdapter(R.array.icons, R.array.titles, R.array.hints));
