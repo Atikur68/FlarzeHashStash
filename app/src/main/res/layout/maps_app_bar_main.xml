@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root_content"
     tools:context=".activity.MapsActivity">
 
     <include layout="@layout/maplayout" />
@@ -25,8 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="left|center"
-                android:textSize="18dp"
-                android:text="Click to Hash"/>
+                android:text="Click to Hash"
+                android:textSize="18dp" />
 
 
             <LinearLayout
@@ -36,8 +36,15 @@
                 android:layout_weight="2"
                 android:background="@color/white"
                 android:gravity="right"
-                android:visibility="gone"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/emojibtn"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:padding="5dp"
+                    android:src="@drawable/happy_grey" />
 
                 <Button
                     android:id="@+id/captureButton"
@@ -46,12 +53,7 @@
                     android:layout_marginRight="5dp"
                     android:background="@drawable/ic_menu_camera" />
 
-                <ImageView
-                    android:id="@+id/emojibtn"
-                    android:layout_width="@dimen/dp_30"
-                    android:layout_height="@dimen/dp_30"
-                    android:padding="5dp"
-                    android:src="@drawable/happy_grey" />
+
             </LinearLayout>
 
 
@@ -59,31 +61,31 @@
                 android:id="@+id/edt_hash_comment"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:hint="Hash Here"
-                android:visibility="gone"
-                android:inputType="textLongMessage"/>
+                android:hint="Write Hashtag..."
+                android:inputType="textLongMessage"
+                android:backgroundTint="@color/white"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/hash_button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="right"
+                android:layout_marginRight="@dimen/dp_10"
                 android:orientation="horizontal"
-                android:visibility="gone"
-                android:gravity="right">
+                android:visibility="gone">
 
                 <Button
                     android:id="@+id/btn_hash"
                     android:layout_width="@dimen/dp_60"
                     android:layout_height="@dimen/dp_30"
-                    android:gravity="center"
                     android:layout_gravity="center"
                     android:background="@drawable/rounded_shape_white"
-                    android:textColor="@color/white"
+                    android:gravity="center"
                     android:text="HASH"
-                    />
+                    android:textColor="@color/white" />
 
             </LinearLayout>
-
 
 
         </android.support.v7.widget.Toolbar>
@@ -91,6 +93,80 @@
     </android.support.design.widget.AppBarLayout>
 
     <!--<include layout="@layout/maps_content_main" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="51dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+
+        <LinearLayout
+            android:id="@+id/stash_camera_emoji_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/stashEmojibtn"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:padding="5dp"
+                android:src="@drawable/happy_grey" />
+
+            <Button
+                android:id="@+id/stashCaptureButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_menu_camera" />
+
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/edt_shash_comment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.8"
+            android:backgroundTint="@color/white"
+            android:hint="Write Stashtag..."
+            android:inputType="textLongMessage"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/shash_button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".6"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_shash"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_shape_white"
+                android:gravity="center"
+                android:text="STASH"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
