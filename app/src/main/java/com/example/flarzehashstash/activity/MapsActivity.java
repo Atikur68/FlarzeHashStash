@@ -117,6 +117,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         adapter = new FriendList_adapter(this, friendLists);
         recyclerView.setAdapter(adapter);
 
+
         btn_hash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
