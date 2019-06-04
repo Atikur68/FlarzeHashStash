@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root_content"
+    tools:context=".activity.MapsActivity">
+
+    <include layout="@layout/maplayout" />
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_maps"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+
+            <TextView
+                android:id="@+id/txt_hash_start"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center"
+                android:textSize="18dp"
+                android:text="Click to Hash"/>
+
+
+            <LinearLayout
+                android:id="@+id/camera_emoji_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="right"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/captureButton"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/ic_menu_camera" />
+
+                <ImageView
+                    android:id="@+id/emojibtn"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:padding="5dp"
+                    android:src="@drawable/happy_grey" />
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/edt_hash_comment"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:hint="Hash Here"
+                android:visibility="gone"
+                android:inputType="textLongMessage"/>
+
+            <LinearLayout
+                android:id="@+id/hash_button_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:gravity="right">
+
+                <Button
+                    android:id="@+id/btn_hash"
+                    android:layout_width="@dimen/dp_60"
+                    android:layout_height="@dimen/dp_30"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_shape_white"
+                    android:textColor="@color/white"
+                    android:text="HASH"
+                    />
+
+            </LinearLayout>
+
+
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--<include layout="@layout/maps_content_main" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_50"
+                android:src="@drawable/share_icon" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_50"
+                android:src="@drawable/world_icon" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_50"
+                android:src="@drawable/sand_clock_icon" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

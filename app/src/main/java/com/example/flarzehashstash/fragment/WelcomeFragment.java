@@ -1,102 +1,53 @@
-package com.example.flarzehashstash.activity;
+package com.example.flarzehashstash.fragment;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.flarzehashstash.R;
 import com.example.flarzehashstash.data.ColorShades;
-import com.example.flarzehashstash.data.SharedPref;
 import com.viewpagerindicator.CirclePageIndicator;
 
-public class WelcomeActivity extends AppCompatActivity {
+
+public class WelcomeFragment extends Fragment {
 
     private static final String SAVING_STATE_SLIDER_ANIMATION = "SliderAnimationSavingState";
     private boolean isSliderAnimation = false;
-    ViewPager viewPager = null;
-    String NOT_FIRST_TIME = "not_first_time";
-    String IS_LOGIN = "is_login";
-    Button btnGotit,btnSkip;
-
-    private void launchHomeScreen() {
-      //  SharedPref.write(NOT_FIRST_TIME, true);
-
-//        if (SharedPref.readBoolean(IS_LOGIN)) {
-//            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-//        } else {
-            startActivity(new Intent(WelcomeActivity.this, SigninActivity.class));
-      //  }
-        finish();
-    }
-
-    private int getItem(int i) {
-        return viewPager.getCurrentItem() + i;
-    }
+    View view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Checking for first time launch - before calling setContentView()
-//        if (SharedPref.readBoolean(NOT_FIRST_TIME)) {
-//            launchHomeScreen();
-//            finish();
-//        }
 
-        setContentView(R.layout.activity_welcome);
-        getSupportActionBar().hide();
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        viewPager = (ViewPager) findViewById(R.id.pager);
+         view = inflater.inflate(R.layout.activity_welcome, container, false);
+
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.pager);
 
         viewPager.setAdapter(new ViewPagerAdapter(R.array.icons, R.array.titles, R.array.hints));
 
-        CirclePageIndicator mIndicator = (CirclePageIndicator) findViewById(R.id.indicator);
+        CirclePageIndicator mIndicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
         mIndicator.setViewPager(viewPager);
 
+
         viewPager.setPageTransformer(true, new CustomPageTransformer());
-
-
-
-         btnGotit = findViewById(R.id.btn_got_it);
-         btnSkip = findViewById(R.id.btn_skip);
-
-         btnSkip.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 launchHomeScreen();
-             }
-         });
-
-        btnGotit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int current = getItem(+1);
-                if (current < 3) {
-                    // move to next screen
-                    viewPager.setCurrentItem(current);
-                } else {
-                    launchHomeScreen();
-                }
-            }
-        });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(final int position, float positionOffset, int positionOffsetPixels) {
 
-                View landingBGView = findViewById(R.id.layout_welcome);
+               View landingBGView = view.findViewById(R.id.layout_welcome);
                 int colorBg[] = getResources().getIntArray(R.array.landing_bg);
 
 
@@ -109,21 +60,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
 
-            @Override
             public void onPageSelected(int position) {
 
-                // changing the next button text 'NEXT' / 'GOT IT'
-                if (position == 2) {
-                    // last page. make button text to GOT IT
-                    btnGotit.setVisibility(View.VISIBLE);
-                    btnGotit.setText(getString(R.string.gotit));
-                    btnSkip.setVisibility(View.GONE);
-                } else {
-                    // still pages are left
-                    btnGotit.setVisibility(View.GONE);
-                    //btnNext.setText(getString(R.string.next));
-                    btnSkip.setVisibility(View.VISIBLE);
-                }
             }
 
             public void onPageScrollStateChanged(int state) {
@@ -131,6 +69,7 @@ public class WelcomeActivity extends AppCompatActivity {
         });
 
 
+        return view;
     }
 
     public class ViewPagerAdapter extends PagerAdapter {
@@ -274,13 +213,12 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onSaveInstanceState(outstate);
     }
 
-    public void onRestoreInstanceState(Bundle inState) {
+    /*public void onRestoreInstanceState(Bundle inState) {
 
         if (inState != null) {
             isSliderAnimation = inState.getBoolean(SAVING_STATE_SLIDER_ANIMATION, false);
         }
         super.onRestoreInstanceState(inState);
 
-    }
+    }*/
 }
-

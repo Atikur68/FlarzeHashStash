@@ -34,4 +34,6 @@
     <dimen name="padding_normal">10dp</dimen>
     <dimen name="margin_small">5dp</dimen>
     <dimen name="dp_70">70dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
 </resources>

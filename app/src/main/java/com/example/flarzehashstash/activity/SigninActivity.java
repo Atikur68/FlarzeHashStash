@@ -33,7 +33,7 @@ public class SigninActivity extends AppCompatActivity {
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SigninActivity.this, MainActivity.class));
+                startActivity(new Intent(SigninActivity.this, MapsActivity.class));
             }
         });
 
