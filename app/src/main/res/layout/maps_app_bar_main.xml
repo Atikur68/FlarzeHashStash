@@ -61,17 +61,17 @@
                 android:id="@+id/edt_hash_comment"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
                 android:hint="Write Hashtag..."
                 android:inputType="textLongMessage"
-                android:backgroundTint="@color/white"
                 android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/hash_button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="right"
                 android:layout_marginRight="@dimen/dp_10"
+                android:gravity="right"
                 android:orientation="horizontal"
                 android:visibility="gone">
 
@@ -96,6 +96,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="119dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/friendlist_recycler"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -109,10 +141,10 @@
             android:id="@+id/stash_camera_emoji_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight=".5"
             android:background="@color/white"
             android:gravity="center"
-            android:layout_gravity="center"
             android:orientation="horizontal"
             android:visibility="visible">
 

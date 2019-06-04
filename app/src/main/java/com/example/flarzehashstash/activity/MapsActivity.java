@@ -14,6 +14,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +31,9 @@ import android.widget.Toast;
 
 
 import com.example.flarzehashstash.R;
+import com.example.flarzehashstash.data.FriendList_adapter;
+import com.example.flarzehashstash.data.Hash_List;
+import com.example.flarzehashstash.data.Hash_adapter;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -43,7 +48,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, LocationListener {
 
@@ -66,6 +73,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private TextView txt_hash_start;
     private LinearLayout camera_emoji_layout,hash_button_layout;
     private EditText edt_hash_comment;
+
+    RecyclerView recyclerView;
+    FriendList_adapter adapter;
+    List<Hash_List> friendLists = new ArrayList<>();
 
 
     @Override
@@ -94,7 +105,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         camera_emoji_layout=findViewById(R.id.camera_emoji_layout);
         hash_button_layout=findViewById(R.id.hash_button_layout);
         edt_hash_comment=findViewById(R.id.edt_hash_comment);
+        recyclerView = findViewById(R.id.friendlist_recycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MapsActivity.this,LinearLayoutManager.HORIZONTAL,false));
 
+
+        friendLists.add(new Hash_List(R.drawable.newfriend_icon,"New"));
+        friendLists.add(new Hash_List(R.drawable.demoman,"You"));
+        friendLists.add(new Hash_List(R.drawable.demoman,"John"));
+        friendLists.add(new Hash_List(R.drawable.demoman,"Atik"));
+        adapter = new FriendList_adapter(this, friendLists);
+        recyclerView.setAdapter(adapter);
 
         btn_hash.setOnClickListener(new View.OnClickListener() {
             @Override

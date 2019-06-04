@@ -2,8 +2,8 @@ package com.example.flarzehashstash.data;
 
 public class Hash_List {
 
-    private int images, dates;
-    private String hashcomment, times,userId,date;
+    private int images, dates,friendlist;
+    private String hashcomment, times,userId,date,friendsName;
     boolean toggleCheck;
     private long cmtTime;
     private int voteCount;
@@ -11,7 +11,12 @@ public class Hash_List {
     private String hashImage,stashImage;
     private long expiration;
 
-    public Hash_List(int images,String hashcomment,String date, String time){
+    public Hash_List(int friendlist,String friendsName) {
+        this.friendlist = friendlist;
+        this.friendsName = friendsName;
+    }
+
+    public Hash_List(int images, String hashcomment, String date, String time){
         this.images = images;
         this.hashcomment = hashcomment;
         this.date = date;
@@ -32,7 +37,13 @@ public class Hash_List {
 
     }
 
+    public String getFriendsName() {
+        return friendsName;
+    }
 
+    public int getFriendlist() {
+        return friendlist;
+    }
 
     public String getUserId() {
         return userId;
