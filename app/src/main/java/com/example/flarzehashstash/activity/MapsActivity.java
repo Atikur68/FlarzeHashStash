@@ -24,6 +24,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -71,12 +72,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Toolbar toolbar;
     private Button btn_hash;
     private TextView txt_hash_start;
-    private LinearLayout camera_emoji_layout,hash_button_layout;
+    private LinearLayout camera_emoji_layout, hash_button_layout, friendlist_layout_maps;
     private EditText edt_hash_comment;
 
     RecyclerView recyclerView;
     FriendList_adapter adapter;
     List<Hash_List> friendLists = new ArrayList<>();
+
+    private ImageView btn_share_maps, btn_world_maps, btn_friendlist_maps;
+    private boolean status = true;
 
 
     @Override
@@ -89,31 +93,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
 
-
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
-      //  getSupportActionBar().hide();
-      //  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //  getSupportActionBar().hide();
+        //  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         toolbar = findViewById(R.id.toolbar_maps);
-       // setSupportActionBar(toolbar);
+        // setSupportActionBar(toolbar);
 
-        btn_hash=findViewById(R.id.btn_hash);
-        txt_hash_start=findViewById(R.id.txt_hash_start);
-        camera_emoji_layout=findViewById(R.id.camera_emoji_layout);
-        hash_button_layout=findViewById(R.id.hash_button_layout);
-        edt_hash_comment=findViewById(R.id.edt_hash_comment);
+        btn_hash = findViewById(R.id.btn_hash);
+        txt_hash_start = findViewById(R.id.txt_hash_start);
+        camera_emoji_layout = findViewById(R.id.camera_emoji_layout);
+        hash_button_layout = findViewById(R.id.hash_button_layout);
+        edt_hash_comment = findViewById(R.id.edt_hash_comment);
         recyclerView = findViewById(R.id.friendlist_recycler);
+        btn_friendlist_maps = findViewById(R.id.btn_friendlist_maps);
+        btn_world_maps = findViewById(R.id.btn_world_maps);
+        btn_share_maps = findViewById(R.id.btn_share_maps);
+        friendlist_layout_maps = findViewById(R.id.friendlist_layout_maps);
+
+
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(MapsActivity.this,LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(MapsActivity.this, LinearLayoutManager.HORIZONTAL, false));
 
 
-        friendLists.add(new Hash_List(R.drawable.newfriend_icon,"New"));
-        friendLists.add(new Hash_List(R.drawable.demoman,"You"));
-        friendLists.add(new Hash_List(R.drawable.demoman,"John"));
-        friendLists.add(new Hash_List(R.drawable.demoman,"Atik"));
+        friendLists.add(new Hash_List(R.drawable.newfriend_icon, "New"));
+        friendLists.add(new Hash_List(R.drawable.demoman, "You"));
+        friendLists.add(new Hash_List(R.drawable.demoman, "John"));
+        friendLists.add(new Hash_List(R.drawable.demoman, "Atik"));
         adapter = new FriendList_adapter(this, friendLists);
         recyclerView.setAdapter(adapter);
 
@@ -132,6 +140,33 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 camera_emoji_layout.setVisibility(View.VISIBLE);
                 hash_button_layout.setVisibility(View.VISIBLE);
                 edt_hash_comment.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn_share_maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MapsActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_world_maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MapsActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_friendlist_maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (status == true) {
+                    friendlist_layout_maps.setVisibility(View.VISIBLE);
+                    status = false;
+                } else {
+                    friendlist_layout_maps.setVisibility(View.GONE);
+                    status = true;
+                }
             }
         });
 
@@ -187,7 +222,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 
     @Override
@@ -249,14 +283,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .title("English")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.dot_gap_icon))
                 .snippet("Click on me:)"));
-        markers.put(english.getId(),"");
+        markers.put(english.getId(), "");
 
         final Marker german = mMap.addMarker(new MarkerOptions()
                 .position(germany)
                 .title("German")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.dot_gap_icon))
                 .snippet("Click on me:)"));
-        markers.put(german.getId(),"");
+        markers.put(german.getId(), "");
 
 
         final Marker italian = mMap.addMarker(new MarkerOptions()
@@ -264,14 +298,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .title("Italian")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.dot_gap_icon))
                 .snippet("Click on me:)"));
-        markers.put(italian.getId(),"");
+        markers.put(italian.getId(), "");
 
         final Marker spanish = mMap.addMarker(new MarkerOptions()
                 .position(spain)
                 .title("Spanish")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.dot_gap_icon))
                 .snippet("Click on me:)"));
-        markers.put(spanish.getId(),"");
+        markers.put(spanish.getId(), "");
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(greatBritain));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(germany));
